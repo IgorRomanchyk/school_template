@@ -1,1 +1,1 @@
-## Template for repositories with home works of pro course students
+## Hi, I'm Igor, I'm 26 years old. I am currently studying on the Front-end Developer course. I love football, cycling, traveling
