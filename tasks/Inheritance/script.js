@@ -1,85 +1,84 @@
-function Builder(int) {
-  this.int = int
+function Builder(value) {
+  this.value = value
 }
 
 Builder.prototype.get = function get() {
-  return this.int
+  return this.value
 }
 
-function IntBuilder(int) {
-  Builder.call(this, int)
+function IntBuilder(value) {
+  Builder.call(this, value)
+}
+
+IntBuilder.random = function random(from, to) {
+  return Math.floor(Math.random() * (to - from + 1) + from)
 }
 
 IntBuilder.prototype = Object.create(Builder.prototype)
+IntBuilder.prototype.constructor = IntBuilder
 
 IntBuilder.prototype.plus = function plus(...n) {
-  this.int = n.reduce((acc, currentValue) => acc + currentValue, this.int)
+  this.value = n.reduce((acc, currentValue) => acc + currentValue, this.value)
   return this
 }
 
 IntBuilder.prototype.minus = function minus(...n) {
-  this.int = n.reduce((acc, currentValue) => acc - currentValue, this.int)
+  this.value = n.reduce((acc, currentValue) => acc - currentValue, this.value)
   return this
 }
 
 IntBuilder.prototype.multiply = function multiply(n) {
-  this.int *= n
+  this.value *= n
   return this
 }
 
 IntBuilder.prototype.divide = function divide(n) {
-  this.int = Math.floor(this.value / n)
+  this.value = Math.floor(this.value / n)
   return this
 }
 
 IntBuilder.prototype.mod = function mod(n) {
-  this.int %= n
-  return this
-}
-
-IntBuilder.prototype.random = function random(from, to) {
-  this.int = Math.floor(Math.random() * (to - from + 1) + from)
+  this.value %= n
   return this
 }
 
 const intBuilder = new IntBuilder(10)
 
-console.log(intBuilder.random(10, 25))
+console.log(intBuilder.minus(3, 5))
 
 class StringBuilder extends Builder {
-  constructor(int) {
-    super(int)
-    this.int = int
+  constructor(value = '') {
+    super(value)
   }
 
   plus(...n) {
-    this.int += n.join('')
+    this.value += n.join('')
     return this
   }
 
   minus(n) {
-    this.int = this.int.slice(0, this.int.length - n)
+    this.value = this.value.slice(0, this.value.length - n)
     return this
   }
 
   multiply(n) {
-    this.int = this.int.repeat(n)
+    this.value = this.value.repeat(n)
     return this
   }
 
   divide(n) {
-    const k = Math.floor(this.int.length / n)
-    this.int = this.int.slice(0, this.int.length - k)
+    const k = Math.floor(this.value.length / n)
+    this.value = this.value.slice(0, this.value.length - k)
     return this
   }
 
   remove(n) {
-    this.int = this.int.split(n).join('')
+    this.value = this.value.split(n).join('')
     return this
   }
 
   sub(from, n) {
-    this.int = this.int.substring(from, from + n)
+    this.value = this.value.substring(from, from + n)
     return this
   }
 }
