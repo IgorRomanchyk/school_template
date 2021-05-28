@@ -7,20 +7,28 @@
 .container {
     max-width: 1400px;
     margin: 0 auto;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh; */
 }
 
 .weather_form {
-    margin: 20px 450px;
-    margin-bottom: 50px;
-    text-align: center;
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 40px;
 }
 
 .weather_img {
     height: 64px;
     width: 64px;
     margin: 0 auto;
+    margin-top: 50px;
     margin-bottom: 20px;
     border-radius: 50%;
 }
@@ -47,12 +55,14 @@
 .weather_temperature {
     font-size: 40px;
     margin: 20px 0;
+    text-align: center;
 }
 
 .weather_location {
     font-size: 20px;
     margin: 20px 0;
-    margin-bottom: 50px;    
+    margin-bottom: 50px;  
+    text-align: center;  
 }
 
 .weather_error {
@@ -76,3 +86,7 @@ button {
     border: solid yellow;
     padding: 2px 5;
 }
+
+/* .weather_container {
+    display: none;
+} */
